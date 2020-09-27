@@ -1,20 +1,26 @@
 package com.example.cutefit2.ui.target
 
 import androidx.compose.runtime.livedata.observeAsState
+import com.example.cutefit2.data.target.TargetRepository
 import com.example.cutefit2.entity.Target
-import com.example.cutefit2.util.stateOf
-import com.example.cutefit2.util.update
+import com.example.cutefit2.util.*
 import java.util.*
 
-class TargetViewModel {
+class TargetViewModel(
+    val targetRepository: TargetRepository
+) {
 
     data class TargetViewState(
-        val target: Target? = null
+        val target: Target
     )
 
-    val state = stateOf<TargetViewState>()
+    val state = stateOf(
+        TargetViewState(Target.TargetFrom(Time()))
+    )
 
-    fun onSelectTargetFrom(startDate: Date) {
+    val completeEvent = toggleOf()
+
+    fun onSelectTargetFrom(startDate: Time) {
         state.update {
             it.copy(
                 target = Target.TargetFrom(startDate = startDate)
@@ -22,11 +28,15 @@ class TargetViewModel {
         }
     }
 
-    fun onSelectTargetTo(endDate: Date) {
+    fun onSelectTargetTo(endDate: Time) {
         state.update {
             it.copy(
                 target = Target.TargetTo(endDate = endDate)
             )
         }
+    }
+
+    fun confirm() {
+        completeEvent.value = true
     }
 }

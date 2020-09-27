@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "30.0.2"
     buildFeatures {
         // Enables Jetpack Compose for this module
@@ -12,8 +12,8 @@ android {
     }
     defaultConfig {
         applicationId "com.example.cutefit2"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion 24
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -67,4 +67,30 @@ dependencies {
 
     // UI Tests
     androidTestImplementation 'androidx.ui:ui-test:1.0.0-alpha03'
+
+    //di
+    implementation "org.koin:koin-core:2.0.1"
+    implementation "org.koin:koin-core-ext:2.0.1"
+    testImplementation "org.koin:koin-test:2.0.1"
+    androidTestImplementation "org.koin:koin-test:2.0.1"
+    implementation "org.koin:koin-android:2.0.1"
+    implementation "org.koin:koin-android-scope:2.0.1"
+    implementation "org.koin:koin-android-viewmodel:2.0.1"
+    implementation "org.koin:koin-android-ext:2.0.1"
+    implementation "org.koin:koin-java:2.0.1"
+
+    //lifecycle
+    def lifecycleVersion = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+    //glide
+
+    implementation "com.github.bumptech.glide:glide:4.11.0"
+    implementation "jp.wasabeef:glide-transformations:3.0.1"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.github.mvarnagiris:compose-glide-image:0.3.9'
+
 }
